@@ -10,7 +10,7 @@ import styles from "./Navbar.module.css";
 const navLinks = [
   { label: "Home",                     href: "/" },
   { label: "About Us",                href: "/about" },
-  { label: "Our Services",            href: "/services" },
+  { label: "Blog",            href: "/blog" },
   { label: "Investment Opportunities", href: "/investments" },
  
   { label: "Contact Us",              href: "/contact" },
