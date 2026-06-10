@@ -113,7 +113,7 @@
 /* ── Right side ── */
 .navRight {
   display: flex;
-  align-items: center;
+  align-items:center;
   gap: 0.75rem;
   flex-shrink: 0;
 }
@@ -197,7 +197,12 @@
   }
 
   .investBtn{
+    display: none;
     padding: 0.45rem 0.9rem;
     font-size: 0.7rem;
   }
+
+  
+
+ 
 }
