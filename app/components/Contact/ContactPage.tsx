@@ -150,7 +150,7 @@ export default function ContactPage() {
           </motion.p>
 
           <motion.div className={styles.contactItems} {...fadeUp(0.3)}>
-            <h2 className={styles.ciHeader} className="text-white font-semibold">Contact Information</h2>
+            <h2 className={`${styles.ciHeader} text-white font-semibold`}>Contact Information</h2>
             {CONTACT_ITEMS.map((item) => (
               <div key={item.label} className={styles.ci}>
                 <div className={styles.ciIcon}>

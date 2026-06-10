@@ -75,6 +75,8 @@ const SECTORS: Sector[] = [
   },
 ];
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 /* ─────────────────────────────────────────
    Animation variants
 ───────────────────────────────────────── */
@@ -102,7 +104,7 @@ const cardVariants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.85,
-      ease: [0.22, 1, 0.36, 1], // custom cinematic easing (expo out)
+      ease: EASE, // custom cinematic easing (expo out)
     },
   },
 };
@@ -113,7 +115,7 @@ const headerVariants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1, ease: EASE },
   },
 };
 
@@ -123,7 +125,7 @@ const eyebrowVariants = {
     opacity: 1,
     y: 0,
     scaleX: 1,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, ease: EASE },
   },
 };
 
@@ -158,7 +160,7 @@ export default function Sectors() {
             variants={headerVariants}
             initial="hidden"
             animate={isInView ? "show" : "hidden"}
-            transition={{ delay: 0.15, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.15, duration: 1, ease: EASE }}
           >
             Sectors We&nbsp;Serve
           </motion.h2>
@@ -168,7 +170,7 @@ export default function Sectors() {
             variants={headerVariants}
             initial="hidden"
             animate={isInView ? "show" : "hidden"}
-            transition={{ delay: 0.28, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.28, duration: 1, ease: EASE }}
           >
             Driving sustainable growth across key industries that define
             Bauchi State's economic future.

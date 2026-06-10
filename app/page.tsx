@@ -7,7 +7,6 @@ import StatsBand from "@/app/components/StatsBand/StatsBand";
 import Sectors   from "@/app/components/Sector/Sectors";
 import Team      from "@/app/components/Team/Team";
 import Footer    from "@/app/components/Footer/Footer";
-import BlogSection from "@/app/components/Blog/BlogSection";
 import ContactPage from "@/app/components/Contact/ContactPage";
 
 export default function HomePage() {
