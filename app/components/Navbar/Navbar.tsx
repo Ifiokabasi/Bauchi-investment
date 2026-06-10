@@ -35,6 +35,7 @@ export default function Navbar() {
           <img src ="/images/logo.jpeg" alt="BIC Logo" className={styles.logoImage}  width="52" height="52"/>
           <div className={styles.logoText}>
             <span className={styles.logoName}>BAUCHI INVESTMENT <br></br>CORPORATION LTD.</span>
+          
            
           </div>
         </Link>
@@ -57,7 +58,7 @@ export default function Navbar() {
         {/* ── Right: CTA + hamburger ── */}
         <div className={styles.navRight}>
           <Link href="/invest" className={styles.investBtn}>
-            Invest With Us
+            Invest Now
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
