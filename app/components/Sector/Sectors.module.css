@@ -1,0 +1,319 @@
+/* Sectors.module.css */
+/* Place at: components/Sectors/Sectors.module.css */
+
+/* ─────────────────────────────────────────
+   Font Awesome — add to app/layout.tsx <head>:
+   <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+───────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&display=swap');
+
+/* ─────────────────────────────────────────
+   CSS variables
+───────────────────────────────────────── */
+
+.section {
+  --gold:        #d4a017;
+  --gold-light:  #e8c04a;
+  --gold-dim:    rgba(212, 160, 23, 0.15);
+  --navy:        #0d1f3c;
+  --navy-mid:    #162d52;
+  --navy-light:  #1e3d6e;
+  --text-light:  rgba(255, 255, 255, 0.72);
+  --text-muted:  rgba(255, 255, 255, 0.42);
+  --card-bg:     rgba(255, 255, 255, 0.035);
+  --card-border: rgba(212, 160, 23, 0.18);
+  --radius:      14px;
+}
+
+/* ─────────────────────────────────────────
+   Section shell
+───────────────────────────────────────── */
+
+.section {
+  position: relative;
+  width: 100%;
+  background: var(--off-white);
+  overflow: hidden;
+  padding: clamp(64px, 8vw, 120px) clamp(20px, 5vw, 64px);
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   Subtle grid texture background
+───────────────────────────────────────── */
+/* 
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(212, 160, 23, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+} */
+
+/* radial vignette over grid */
+/* .bgGrid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, var(--navy) 100%);
+} */
+
+/* ─────────────────────────────────────────
+   Inner max-width container
+───────────────────────────────────────── */
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────
+   Header block
+───────────────────────────────────────── */
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: clamp(10px, 1vw, 11px);
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid rgba(212, 160, 23, 0.28);
+  border-radius: 20px;
+  padding: 6px 16px;
+  margin-bottom: clamp(14px, 2vw, 20px);
+}
+
+.heading {
+  font-family: 'montserrat', serif;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 700;
+  color: var(--green-dark);
+  line-height: 1.12;
+  margin: 0 0 clamp(12px, 1.5vw, 18px);
+  letter-spacing: -0.5px;
+}
+
+.subheading {
+  font-size: clamp(14px, 1.4vw, 17px);
+  font-weight: 300;
+  color: var(--text-dark);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────
+   Cards grid
+───────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+/* ─────────────────────────────────────────
+   Card
+───────────────────────────────────────── */
+
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 32px) clamp(20px, 2.5vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(212, 160, 23, 0.45);
+
+}
+
+/* ─── Gold top border accent line ─── */
+
+.cardTopAccent {
+  position: absolute;
+  top: 0;
+  left: clamp(20px, 3vw, 32px);
+  right: clamp(20px, 3vw, 32px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+  border-radius: 0 0 2px 2px;
+  transition: opacity 0.35s ease, left 0.35s ease, right 0.35s ease;
+}
+
+.card:hover .cardTopAccent {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────
+   Icon
+───────────────────────────────────────── */
+
+.iconWrap {
+  width: clamp(48px, 5vw, 64px);
+  height: clamp(48px, 5vw, 64px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.2) 0%, rgba(212, 160, 23, 0.06) 100%);
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(16px, 2vw, 22px);
+  transition: background 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+}
+
+.card:hover .iconWrap {
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.35) 0%, rgba(212, 160, 23, 0.12) 100%);
+  border-color: rgba(212, 160, 23, 0.6);
+  transform: scale(1.08);
+}
+
+.icon {
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--green-main);
+}
+
+/* ─────────────────────────────────────────
+   Card body
+───────────────────────────────────────── */
+
+.cardBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.accentLine {
+  display: inline-block;
+  font-size: clamp(9px, 0.85vw, 10px);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-bottom: clamp(6px, 1vw, 10px);
+}
+
+.cardTitle {
+  font-family: 'montserrat', serif;
+  font-size: clamp(17px, 1.7vw, 22px);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.25;
+  margin: 0 0 clamp(10px, 1.2vw, 14px);
+  letter-spacing: -0.2px;
+}
+
+.cardDesc {
+  font-size: clamp(13px, 1.1vw, 14.5px);
+  font-weight: 300;
+  color: var( --text-mid);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* ─────────────────────────────────────────
+   Card footer
+───────────────────────────────────────── */
+
+.cardFooter {
+  margin-top: clamp(16px, 2vw, 22px);
+  padding-top: clamp(12px, 1.5vw, 16px);
+  border-top: 1px solid rgba(212, 160, 23, 0.1);
+  transition: border-color 0.35s ease;
+}
+
+.card:hover .cardFooter {
+  border-color: rgba(212, 160, 23, 0.25);
+}
+
+.learnMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--gold);
+  opacity: 0.7;
+  transition: opacity 0.25s ease, gap 0.25s ease;
+}
+
+.learnMore i {
+  font-size: clamp(10px, 0.9vw, 12px);
+  transition: transform 0.25s ease;
+}
+
+.card:hover .learnMore {
+  opacity: 1;
+  gap: 12px;
+}
+
+.card:hover .learnMore i {
+  transform: translateX(3px);
+}
+
+/* ─────────────────────────────────────────
+   Responsive — Tablet (≤ 900px): 2 columns
+───────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+  }
+}
+
+/* ─────────────────────────────────────────
+   Responsive — Mobile (≤ 560px): 1 column
+───────────────────────────────────────── */
+
+@media (max-width: 560px) {
+  .section {
+    padding: clamp(48px, 10vw, 72px) clamp(16px, 5vw, 24px);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 4vw, 18px);
+  }
+
+  .card {
+    padding: 24px 20px 20px;
+  }
+
+  .heading {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+
+  .cardTitle {
+    font-size: clamp(16px, 4.5vw, 20px);
+  }
+}

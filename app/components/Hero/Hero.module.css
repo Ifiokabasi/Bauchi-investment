@@ -1,0 +1,582 @@
+/* Hero.module.css */
+/* Place at: components/Hero/Hero.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Barlow:wght@300;400;500;600&display=swap');
+
+/* ─────────────────────────────────────────
+   Keyframes
+───────────────────────────────────────── */
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(1.12); }
+  to   { transform: scale(1.0); }
+}
+
+@keyframes ruleExpand {
+  to { width: 44px; }
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+
+/* ─────────────────────────────────────────
+   Outer shell
+───────────────────────────────────────── */
+
+.heroSection {
+  font-family: 'Barlow', sans-serif;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+  height: 100vh;
+}
+
+.slidesWrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+
+/* ─────────────────────────────────────────
+   Individual slide
+───────────────────────────────────────── */
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+/* ─────────────────────────────────────────
+   Background image — cinematic zoom
+───────────────────────────────────────── */
+
+.slideImg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  transform: scale(1.12);
+}
+
+.slide.active .slideImg {
+  animation: zoomIn 7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+
+/* ─────────────────────────────────────────
+   Gradient overlay
+───────────────────────────────────────── */
+
+.slideOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.93) 0%, rgba(255, 255, 255, 0.18) 100%),
+    /* linear-gradient(to top,   rgba(0,0,0,0.88) 0%, transparent 45%); */
+}
+
+
+/* ─────────────────────────────────────────
+   Content layout
+───────────────────────────────────────── */
+
+.slideContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+.slideLeft {
+  flex: 1;
+  padding: 52px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.slideRight {
+  width: 210px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 28px 38px 0;
+}
+
+
+/* ─────────────────────────────────────────
+   Gold rule line
+───────────────────────────────────────── */
+
+.heroRule {
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #d4a017;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.slide.active .heroRule {
+  animation: ruleExpand 0.8s ease-out 0.15s forwards;
+}
+
+
+/* ─────────────────────────────────────────
+   Hero text — slideUp layers
+   (mirrors your exact pattern)
+───────────────────────────────────────── */
+
+.heroEyebrow {
+  opacity: 0;
+  transform: translateY(60px);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: #d4a017;
+  margin-bottom: 10px;
+}
+
+.slide.active .heroEyebrow {
+  animation: slideUp 1.2s ease-out forwards;
+  animation-delay: 0.0s;
+}
+
+.heroTitle {
+  opacity: 0;
+  transform: translateY(60px);
+  font-family: 'montserrat', serif;
+  font-size: 80px;
+  font-weight: 800;
+  color: #0d3d1e;
+  line-height: 1.16;
+  margin: 0 0 18px;
+}
+
+.slide.active .heroTitle {
+  animation: slideUp 1.2s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.heroSubtitle {
+  opacity: 0;
+  transform: translateY(40px);
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.75;
+  max-width: 380px;
+  width: 100%;
+  margin: 0 0 30px;
+  font-weight: 300;
+}
+
+.slide.active .heroSubtitle {
+  animation: slideUp 1.2s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.heroCTA {
+  opacity: 0;
+  transform: translateY(30px);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.slide.active .heroCTA {
+  animation: slideUp 1.2s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.heroStat {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide.active .heroStat {
+  animation: slideUp 1.2s ease-out forwards;
+  animation-delay: 1.0s;
+}
+
+
+/* ─────────────────────────────────────────
+   Vision / category tag
+───────────────────────────────────────── */
+
+.visionTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 160, 23, 0.12);
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11px;
+  color: #d4a017;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+
+/* ─────────────────────────────────────────
+   Buttons
+───────────────────────────────────────── */
+
+.btnGold {
+  background: #d4a017;
+  color: #0a1628;
+  border: none;
+  padding: 11px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  transition: background 0.2s;
+}
+
+.btnGold:hover {
+  background: #e8b520;
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--gold );
+  padding: 11px 20px;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btnGhost:hover {
+  border-color: var(--gold-light);
+  background: rgba(212, 160, 23, 0.1);
+}
+
+
+/* ─────────────────────────────────────────
+   Stat card
+───────────────────────────────────────── */
+
+.statCard {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 18px 22px;
+  backdrop-filter: blur(14px);
+  text-align: right;
+  min-width: 158px;
+}
+
+.statNum {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #d4a017;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.4px;
+  font-weight: 300;
+}
+
+
+/* ─────────────────────────────────────────
+   Dot indicators
+───────────────────────────────────────── */
+
+.dots {
+  position: absolute;
+  bottom: 22px;
+  left: 40px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: background 0.3s, width 0.3s;
+  border: none;
+  padding: 0;
+}
+
+.dot.active {
+  background: #d4a017;
+  width: 46px;
+}
+
+
+/* ─────────────────────────────────────────
+   Nav arrows
+───────────────────────────────────────── */
+
+.navArrows {
+  position: absolute;
+  bottom: 14px;
+  right: 28px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.navBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+.navBtn:hover {
+  background: rgba(212, 160, 23, 0.3);
+  border-color: #d4a017;
+}
+
+
+/* ─────────────────────────────────────────
+   Slide counter
+───────────────────────────────────────── */
+
+.slideNum {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  z-index: 10;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.32);
+  letter-spacing: 1.5px;
+  font-family: 'Barlow', sans-serif;
+}
+
+
+/* ─────────────────────────────────────────
+   Gold progress bar
+───────────────────────────────────────── */
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: #d4a017;
+  width: 0%;
+  z-index: 20;
+  border-radius: 0 2px 2px 0;
+}
+
+.progressBar.running {
+  animation: progressFill 5.5s linear forwards;
+}
+
+
+/* ─────────────────────────────────────────
+   Responsive — Tablet (≤ 768px)
+───────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  .heroSection {
+    margin-top: 4rem;
+    height: auto;
+  }
+  .slidesWrap {
+    height: auto;
+    min-height: 480px;
+  }
+
+  .slideContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .slideLeft {
+    padding: 48px 24px 24px;
+    width: 100%;
+  }
+
+  .slideRight {
+    width: 100%;
+    padding: 0 24px 60px;
+    justify-content: flex-start;
+  }
+
+  .heroTitle {
+    font-size: 48px;
+  }
+
+  .heroSubtitle {
+    max-width: 100%;
+    width: 400px;
+    font-size: 13px;
+  }
+
+  .statCard {
+    text-align: left;
+    min-width: unset;
+    width: auto;
+    display: none;
+  }
+
+  .dots {
+    left: 24px;
+    bottom: 18px;
+  }
+
+  .navArrows {
+    right: 20px;
+    bottom: 12px;
+  }
+
+  .slideNum {
+    right: 20px;
+    top: 16px;
+  }
+
+  .slideOverlay {
+    /* height: 100%; */
+    background:
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.85) 100%),
+      linear-gradient(to right, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.2) 100%);
+  }
+
+
+
+}
+
+
+/* ─────────────────────────────────────────
+   Responsive — Mobile (≤ 480px)
+───────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .slidesWrap {
+    min-height: 520px;
+  }
+
+  .slideLeft {
+    padding: 40px 20px 20px;
+  }
+
+  .slideRight {
+    padding: 0 20px 64px;
+  }
+
+  .heroTitle {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+
+  .heroEyebrow {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .heroSubtitle {
+    font-size: 13px;
+    margin-bottom: 22px;
+    line-height: 1.65;
+  }
+
+  .heroCTA {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btnGold,
+  .btnGhost {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .statCard {
+    padding: 14px 18px;
+  }
+
+  .statNum {
+    font-size: 24px;
+  }
+
+  .statLabel {
+    font-size: 10px;
+  }
+
+  .dots {
+    left: 20px;
+    bottom: 16px;
+  }
+
+  .dot {
+    width: 22px;
+  }
+
+  .dot.active {
+    width: 36px;
+  }
+
+  .navBtn {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .slideNum {
+    display: none;
+  }
+
+  .heroRule {
+    margin-bottom: 12px;
+  }
+}

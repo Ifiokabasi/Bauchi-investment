@@ -1,0 +1,479 @@
+/* ManagementTeamCinematic.module.css */
+/* Place at: components/ManagementTeam/ManagementTeamCinematic.module.css */
+
+/*
+  Font Awesome — add once to app/layout.tsx <head>:
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  Google Fonts — add once to app/layout.tsx <head>:
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+*/
+
+/* ─────────────────────────────────────────
+   CSS custom properties
+───────────────────────────────────────── */
+
+.section {
+  --green-dark:  #0d3d1e;
+  --green-main:  #1a5c2a;
+  --green-mid:   #2d7a3e;
+  --green-light: #4caf70;
+  --gold:        #d4a017;
+  --gold-light:  #e8c060;
+  --white:       #ffffff;
+  --off-white:   #f5f7f2;
+
+  /* cinematic dark base */
+  --bg:          #080f0a;
+  --card-bg:     #0d1a10;
+  --gap:         2px;
+}
+
+/* ─────────────────────────────────────────
+   Section shell
+───────────────────────────────────────── */
+
+.section {
+  background: var( --white);
+  padding: clamp(64px, 8vw, 96px) clamp(16px, 5vw, 72px);
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────
+   Header
+───────────────────────────────────────── */
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+  margin-bottom: clamp(48px, 7vw, 72px);
+}
+
+.headerLeft {}
+
+.tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tag::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.heading {
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -1.5px;
+  color: var(--green-dark);
+  margin: 0;
+}
+
+.headingOutline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+  font-style: normal;
+}
+
+.headerRight {
+  text-align: right;
+}
+
+.memberCount {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 160, 23, 0.22);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.headerDesc {
+  font-size: clamp(11px, 1.1vw, 13px);
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.42);
+  max-width: 280px;
+  margin-left: auto;
+  line-height: 1.7;
+  margin-top: 6px;
+}
+
+/* ─────────────────────────────────────────
+   Grid
+───────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+/* ─────────────────────────────────────────
+   Card
+───────────────────────────────────────── */
+
+.card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--card-bg);
+  will-change: transform, opacity;
+}
+
+/* ─────────────────────────────────────────
+   Photo
+───────────────────────────────────────── */
+
+.imgWrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+/* Next/Image fill sits inside imgWrap */
+.imgWrap img {
+  filter: grayscale(30%) brightness(0.85);
+  transform: scale(1.05);
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.6s ease;
+  object-fit: cover;
+}
+
+.card:hover .imgWrap img {
+  filter: grayscale(0%) brightness(0.55);
+  transform: scale(1.12);
+}
+
+/* cinematic gradient over photo */
+.imgWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(8, 15, 10, 1) 0%, rgba(8, 15, 10, 0.5) 40%, transparent 70%),
+    linear-gradient(to right, rgba(8, 15, 10, 0.35) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   Index number
+───────────────────────────────────────── */
+
+.indexNum {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   Resting name plate (always visible)
+───────────────────────────────────────── */
+
+.namePlate {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: clamp(18px, 3vw, 24px) clamp(16px, 2.5vw, 22px) clamp(16px, 2.5vw, 20px);
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .namePlate {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.namePlateRole {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.namePlateName {
+  font-size: clamp(14px, 1.6vw, 19px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────
+   Hover reveal panel
+───────────────────────────────────────── */
+
+.hoverPanel {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  padding: clamp(20px, 3vw, 28px) clamp(16px, 2.5vw, 22px) clamp(18px, 2.5vw, 24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    to top,
+    rgba(8, 15, 10, 0.97) 50%,
+    rgba(8, 15, 10, 0.5) 100%
+  );
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .hoverPanel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hoverRole {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.hoverName {
+  font-size: clamp(15px, 1.7vw, 20px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+  margin: 0 0 12px;
+}
+
+/* ─────────────────────────────────────────
+   Gold rule line
+───────────────────────────────────────── */
+
+.rule {
+  width: 24px;
+  height: 1.5px;
+  background: var(--gold);
+  margin-bottom: 12px;
+  border-radius: 1px;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .rule {
+  width: 40px;
+}
+
+/* ─────────────────────────────────────────
+   Description
+───────────────────────────────────────── */
+
+.hoverDesc {
+  font-size: clamp(11px, 1vw, 12.5px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin: 0 0 clamp(14px, 2vw, 18px);
+  flex: 1;
+}
+
+/* ─────────────────────────────────────────
+   Social links
+───────────────────────────────────────── */
+
+.socials {
+  display: flex;
+  gap: 8px;
+  margin-bottom: clamp(12px, 1.5vw, 16px);
+}
+
+.socialLink {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.58);
+  text-decoration: none;
+  font-size: 11px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.socialLink:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--green-dark);
+  transform: scale(1.14);
+}
+
+/* ─────────────────────────────────────────
+   Profile link
+───────────────────────────────────────── */
+
+.profileLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.profileLink:hover {
+  color: var(--gold);
+  gap: 11px;
+}
+
+.arrowIcon {
+  font-size: 9px;
+  transition: transform 0.2s ease;
+}
+
+.profileLink:hover .arrowIcon {
+  transform: translateX(3px);
+}
+
+/* ─────────────────────────────────────────
+   Gold sweep underline
+───────────────────────────────────────── */
+
+.goldSweep {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  height: 2px;
+  background: var(--gold);
+  z-index: 10;
+  transition: right 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .goldSweep {
+  right: 0;
+}
+
+/* ─────────────────────────────────────────
+   Footer bar
+───────────────────────────────────────── */
+
+.bar {
+  margin-top: var(--gap);
+  background: var(--white);
+  padding: clamp(16px, 2vw, 20px) clamp(16px, 3vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.barText {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.3px;
+}
+
+.barLink {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  padding: 8px 18px;
+  border-radius: 2px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.barLink:hover {
+  background: var(--gold);
+  color: var(--green-dark);
+  border-color: var(--gold);
+}
+
+/* ─────────────────────────────────────────
+   Responsive — Tablet (≤ 860px): 2 columns
+───────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .headerRight {
+    text-align: left;
+  }
+
+  .headerDesc {
+    margin-left: 0;
+  }
+}
+
+/* ─────────────────────────────────────────
+   Responsive — Mobile (≤ 520px): 1 column
+───────────────────────────────────────── */
+
+@media (max-width: 520px) {
+  .section {
+    padding: clamp(48px, 10vw, 64px) 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heading {
+    font-size: clamp(28px, 9vw, 38px);
+  }
+
+  .memberCount {
+    font-size: clamp(40px, 12vw, 56px);
+  }
+}
