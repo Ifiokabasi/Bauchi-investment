@@ -1,23 +1,18 @@
 import { client } from '@/sanity/client'
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  // 🚨 DEBUG (important)
-  console.log("SLUG PARAM:", params?.slug)
+export default async function PostPage(
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params
 
-  if (!params?.slug) {
-    return <div>Missing slug</div>
-  }
+  console.log("SLUG PARAM:", slug)
 
   const query = `
     *[_type == "post" && slug.current == $slug][0]
   `
 
   const post = await client.fetch(query, {
-    $slug: params.slug, // ✅ THIS FIXES YOUR ERROR
+    slug,
   })
 
   if (!post) {
