@@ -43,11 +43,13 @@ export default function BlogHero({ post }: { post: Post }) {
         <Image
           src={imgUrl}
           alt={post.title}
+          
           fill
           style={{ objectFit: "cover" }}
           priority
           sizes="100vw"
           className={styles.img}
+          unoptimized
         />
       </div>
 

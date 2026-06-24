@@ -57,6 +57,7 @@ function PostCard({ post, index }: { post: Post; index: number }) {
             style={{ objectFit: "cover" }}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className={styles.img}
+            unoptimized
           />
           <div className={styles.imgOverlay} />
           <span className={styles.category}>
