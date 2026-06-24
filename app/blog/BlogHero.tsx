@@ -9,32 +9,43 @@ import { motion } from "framer-motion";
 import { urlFor, Post } from "@/sanity/lib/sanity";
 import styles from "./BlogHero.module.css";
 
-
-
-
-// ... rest of your component
-
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const CATEGORY_LABELS: Record<string, string> = {
-  investment:      "Investment",
-  infrastructure:  "Infrastructure",
-  agriculture:     "Agriculture",
-  energy:          "Energy",
+  investment: "Investment",
+  infrastructure: "Infrastructure",
+  agriculture: "Agriculture",
+  energy: "Energy",
   "capital-markets": "Capital Markets",
-  partnerships:    "Partnerships",
-  news:            "News",
+  partnerships: "Partnerships",
+  news: "News",
 };
 
 export default function BlogHero({ post }: { post: Post }) {
+  console.log("⭐ BlogHero - Post:", post);
+  console.log("⭐ BlogHero - Slug:", post.slug);
+  console.log("⭐ BlogHero - Slug type:", typeof post.slug);
+  console.log("⭐ BlogHero - CoverImage:", post.coverImage);
 
-  console.log("BlogHero post:", post);
-  console.log("BlogHero coverImage:", post.coverImage);
+  // Handle missing coverImage with fallback
+  let imgUrl = "/images/blog-fallback.jpg";
+  try {
+    if (post.coverImage) {
+      imgUrl = urlFor(post.coverImage).width(1600).height(820).fit("crop").url();
+    }
+  } catch (error) {
+    console.error("Error generating image URL:", error);
+  }
 
-  const imgUrl = urlFor(post.coverImage).width(1600).height(820).fit("crop").url();
   const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-GB", {
-    day: "numeric", month: "long", year: "numeric",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
+
+  // ✅ Debug the link URL
+  const postUrl = `/blog/${post.slug}`;
+  console.log("⭐ BlogHero - Post URL:", postUrl);
 
   return (
     <section className={styles.hero}>
@@ -43,7 +54,6 @@ export default function BlogHero({ post }: { post: Post }) {
         <Image
           src={imgUrl}
           alt={post.title}
-          
           fill
           style={{ objectFit: "cover" }}
           priority
@@ -107,10 +117,22 @@ export default function BlogHero({ post }: { post: Post }) {
               </div>
             </div>
 
-            <Link href={`/blog/${post.slug.current}`} className={styles.readBtn}>
+            {/* ✅ FIXED: Use post.slug (not post.slug.current) */}
+            <Link href={postUrl} className={styles.readBtn}>
               Read Article
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </Link>
           </motion.div>

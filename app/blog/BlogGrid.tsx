@@ -1,8 +1,6 @@
 "use client";
 
 // src/components/blog/BlogGrid.tsx
-// Masonry-style magazine grid of post cards
-
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -27,15 +25,19 @@ function PostCard({ post, index }: { post: Post; index: number }) {
   const ref    = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
-  // const imgUrl = urlFor(post.coverImage).width(800).height(480).fit("crop").url();
-
   const imgUrl = post.coverImage
-  ? urlFor(post.coverImage).width(800).height(480).fit("crop").url()
-  : "/images/agric.jpg"; 
-
+    ? urlFor(post.coverImage).width(800).height(480).fit("crop").url()
+    : "/images/agric.jpg";
 
   const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-GB", {
     day: "numeric", month: "short", year: "numeric",
+  });
+
+  // ✅ Debug: Log the slug being used
+  console.log(`📌 Post ${index} - ${post.title}:`, {
+    slug: post.slug,
+    slugType: typeof post.slug,
+    href: `/blog/${post.slug}`
   });
 
   return (
@@ -47,8 +49,8 @@ function PostCard({ post, index }: { post: Post; index: number }) {
       transition={{ duration: 0.85, ease: EASE, delay: (index % 3) * 0.1 }}
       whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
     >
-      <Link href={`/blog/${post.slug.current}`} className={styles.cardLink}>
-        {/* Image */}
+      {/* ✅ FIXED: Use post.slug (not post.slug.current) */}
+      <Link href={`/blog/${post.slug}`} className={styles.cardLink}>
         <div className={styles.imgWrap}>
           <Image
             src={imgUrl}
@@ -65,7 +67,6 @@ function PostCard({ post, index }: { post: Post; index: number }) {
           </span>
         </div>
 
-        {/* Body */}
         <div className={styles.body}>
           <h2 className={styles.title}>{post.title}</h2>
           <p className={styles.excerpt}>{post.excerpt}</p>
@@ -82,7 +83,6 @@ function PostCard({ post, index }: { post: Post; index: number }) {
           </div>
         </div>
 
-        {/* Gold sweep bottom border */}
         <div className={styles.sweep} />
       </Link>
     </motion.div>
