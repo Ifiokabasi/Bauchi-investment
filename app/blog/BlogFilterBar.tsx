@@ -1,9 +1,7 @@
 "use client";
 
 // src/components/blog/BlogFilterBar.tsx
-// Category filter pills — client component (URL state)
-
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import styles from "./BlogFilterBar.module.css";
 
 const CATEGORIES = [
@@ -17,16 +15,15 @@ const CATEGORIES = [
   { label: "News",           value: "news"          },
 ];
 
-export default function BlogFilterBar() {
-  const router       = useRouter();
-  const pathname     = usePathname();
-  const searchParams = useSearchParams();
-  const active       = searchParams.get("category") ?? "all";
+// ✅ Now a simple client component that receives the current category as a prop
+export default function BlogFilterBar({ initialCategory = "all" }: { initialCategory?: string }) {
+  const router   = useRouter();
+  const pathname = usePathname();
+  const active   = initialCategory; // ✅ No useSearchParams() needed!
 
   function setCategory(val: string) {
-    const params = new URLSearchParams(searchParams.toString());
-    if (val === "all") params.delete("category");
-    else params.set("category", val);
+    const params = new URLSearchParams();
+    if (val !== "all") params.set("category", val);
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
