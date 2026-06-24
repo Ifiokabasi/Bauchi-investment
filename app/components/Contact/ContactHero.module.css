@@ -1,0 +1,221 @@
+/* app/contact/ContactPage.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap');
+
+/* ─────────────────────────────────────────
+   CSS variables
+───────────────────────────────────────── */
+
+.page {
+  --gd:    #0d3d1e;
+  --gm:    #1a5c2a;
+  --gmi:   #2d7a3e;
+  --gl:    #4caf70;
+  --gold:  #d4a017;
+  --gold-l:#e8c060;
+  --white: #ffffff;
+  --off:   #f5f7f2;
+  --text:  #0d3d1e;
+  --muted: rgba(13,61,30,0.55);
+  --hint:  rgba(13,61,30,0.22);
+}
+
+/* ─────────────────────────────────────────
+   Page shell
+───────────────────────────────────────── */
+
+.page {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text);
+  background: var(--off);
+}
+
+/* ═══════════════════════════════════════════
+   PAGE HERO — full image with slow zoom
+═══════════════════════════════════════════ */
+
+.pageHero {
+  position: relative;
+  height: clamp(360px, 52vh, 520px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background image — swap src via inline style or Next/Image */
+.heroImg {
+  position: absolute;
+  inset: -6%;
+  background-image: url('/images/skyline.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.45);
+  animation: heroZoom 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.18); }
+  to   { transform: scale(1.0); }
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 61, 30, 0.2) 0%,
+    rgba(8, 15, 10, 0.78) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroEyebrow {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.heroEyebrow::before,
+.heroEyebrow::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.heroH {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
+  line-height: 1.0;
+  margin-bottom: 0;
+}
+
+.heroRule {
+  height: 2px;
+  background: var(--gold);
+  margin: 16px auto;
+  border-radius: 1px;
+  /* width animated via framer-motion */
+}
+
+.heroSub {
+  font-size: clamp(12px, 1.3vw, 15px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 520px;
+  line-height: 1.75;
+}
+
+.heroScroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.scrollLabel {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.scrollArrow {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out 1.5s infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+  50%       { opacity: 1;   transform: scaleY(1); }
+}
+
+/* ─────────────────────────────────────────
+   Breadcrumb strip
+───────────────────────────────────────── */
+
+.introStrip {
+  background: var(--white);
+  border-bottom: 1px solid rgba(13, 61, 30, 0.08);
+  padding: 0 clamp(24px, 6vw, 80px);
+}
+
+.bc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.bcLink {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.bcLink:hover { color: var(--gmi); }
+
+.bcSep { color: var(--hint); }
+.bcActive { color: var(--gmi); }
+
+/* ─────────────────────────────────────────
+   Responsive — Tablet (≤ 800px)
+───────────────────────────────────────── */
+
+@media (max-width: 800px) {
+  .pageHero {
+    height: clamp(300px, 45vh, 420px);
+  }
+}
+
+/* ─────────────────────────────────────────
+   Responsive — Mobile (≤ 520px)
+───────────────────────────────────────── */
+
+@media (max-width: 520px) {
+  .pageHero {
+    height: 360px;
+  }
+  .heroH {
+    letter-spacing: -1px;
+  }
+  .heroEyebrow::before,
+  .heroEyebrow::after {
+    width: 20px;
+  }
+  .heroEyebrow {
+    font-size: 7px;
+    gap: 8px;
+  }
+}
