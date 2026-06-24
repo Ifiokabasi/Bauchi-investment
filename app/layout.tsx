@@ -10,8 +10,27 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Bauchi Investment Corporation Limited",
+  title: {
+    default: "Bauchi Investment Corporation",
+    template: "%s | Bauchi Investment Corporation",
+  },
   description: "Catalyzing Investment, Powering Prosperity.",
+  metadataBase: new URL("https://yourdomain.com"),
+  openGraph: {
+    title: "Bauchi Investment Corporation",
+    description: "Catalyzing Investment, Powering Prosperity.",
+    url: "https://yourdomain.com",
+    siteName: "Bauchi Investment Corporation",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+   icons: {
+    icon: "/flavicon.ico",
+  },
 };
 
 

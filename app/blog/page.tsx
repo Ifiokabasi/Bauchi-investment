@@ -1,32 +1,34 @@
-import {client} from '@/sanity/client'
-import Link from 'next/link'
+// src/app/blog/page.tsx
+import { getAllPosts, getFeaturedPost } from "@/sanity/lib/sanity";
+import BlogHero from "./BlogHero";
+import BlogGrid from "./BlogGrid";
+import BlogFilterBar from "./BlogFilterBar";
 
-const query = `
-*[_type == "post"] | order(publishedAt desc){
-  title,
-  slug,
-  excerpt,
-  mainImage
-}
-`
+export const revalidate = 60;
 
-export default async function BlogPage() {
-  const posts = await client.fetch(query)
+export const metadata = {
+  title: "Insights & News | Bauchi Investment Corporation",
+  description:
+    "Stay up to date with the latest investment news, sector insights, project updates and economic analysis from Bauchi Investment Corporation.",
+};
+
+export default async function BlogIndexPage() {
+  const [featured, allPosts] = await Promise.all([
+    getFeaturedPost(),
+    getAllPosts(),
+  ]);
+
+  const gridPosts = featured
+    ? allPosts.filter((p) => p._id !== featured._id)
+    : allPosts;
 
   return (
-    <main style={{padding: '40px'}}>
-      <h1>Blog</h1>
-
-      <div style={{display: 'grid', gap: '20px'}}>
-        {posts.map((post: any) => (
-          <Link key={post.slug.current} href={`/blog/${post.slug.current}`}>
-            <div style={{border: '1px solid #ddd', padding: '20px'}}>
-              <h2>{post.title}</h2>
-              <p>{post.excerpt}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+    <main className="blog-page">
+      {featured && <BlogHero post={featured} />}
+      <section className="blog-body">
+        <BlogFilterBar />
+        <BlogGrid posts={gridPosts} />
+      </section>
     </main>
-  )
+  );
 }

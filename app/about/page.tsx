@@ -14,6 +14,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AboutPage.module.css";
 
+
+
+
+
+
+
+
 /* ─────────────────────────────────────────
    Scroll-reveal wrapper (replaces CSS .reveal)
 ───────────────────────────────────────── */
@@ -98,6 +105,9 @@ const SERVICES = [
 /* ─────────────────────────────────────────
    Component
 ───────────────────────────────────────── */
+
+
+
 
 export default function AboutPage() {
   return (

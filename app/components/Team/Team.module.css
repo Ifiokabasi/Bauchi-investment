@@ -299,6 +299,8 @@
   font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
   margin: 0 0 clamp(14px, 2vw, 18px);
   flex: 1;
 }

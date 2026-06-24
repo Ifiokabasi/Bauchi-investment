@@ -1,27 +1,45 @@
-import { client } from '@/sanity/client'
+// src/app/blog/[slug]/page.tsx
+// Individual blog post page
 
-export default async function PostPage(
-  { params }: { params: Promise<{ slug: string }> }
-) {
-  const { slug } = await params
+import { notFound } from "next/navigation";
+import { getPostBySlug, getRelatedPosts, getAllPostSlugs } from "@/sanity/lib/sanity";
+import PostHero from "../PostHero";
+import PostBody from "../PostBody";
+import RelatedPosts from "../RelatedPosts";
 
-  console.log("SLUG PARAM:", slug)
+export const revalidate = 60;
 
-  const query = `
-    *[_type == "post" && slug.current == $slug][0]
-  `
+// Generate all static routes at build time
+export async function generateStaticParams() {
+  const slugs = await getAllPostSlugs();
+  return slugs.map((s) => ({ slug: s.slug }));
+}
 
-  const post = await client.fetch(query, {
-    slug,
-  })
+// ✅ FIXED: Dynamic metadata per post - await params
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; // ← AWAIT the params Promise
+  const post = await getPostBySlug(slug);
+  if (!post) return { title: "Post Not Found | BIC" };
+  return {
+    title: `${post.title} | BIC Insights`,
+    description: post.excerpt,
+  };
+}
 
-  if (!post) {
-    return <div>Post not found</div>
-  }
+// ✅ FIXED: Page component - await params
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; // ← AWAIT the params Promise
+  
+  const post = await getPostBySlug(slug);
+  if (!post) notFound();
+
+  const related = await getRelatedPosts(post.category, slug);
 
   return (
-    <main style={{ padding: '40px' }}>
-      <h1>{post.title}</h1>
+    <main>
+      <PostHero post={post} />
+      <PostBody post={post} />
+      {related.length > 0 && <RelatedPosts posts={related} />}
     </main>
-  )
+  );
 }

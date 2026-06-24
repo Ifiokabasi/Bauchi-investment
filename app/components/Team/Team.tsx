@@ -51,13 +51,19 @@ const TEAM: TeamMember[] = [
     nameLines: ["Sani Abdullahi", "Umar"],
     roleBadge: "Acting MD / CEO",
     roleFulls: "Acting Managing Director & CEO",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    desc: `Sani Abdullahi Umar is the Ag. Managing Director of Bauchi Investment Corporation (BIC) Ltd. He has about three decades of experience in staff development, talent recruitment and entrenching enabling work
+environment. 
+
+Sani has contributed immensely to BIC through organisational structuring, oversight of daily operations, institutionalisation of performance Management system, conflict resolution to mention a few.
+
+His passion for setting priorities, execution of the company objectives, building top performance team and the entrenchment of core values that align with the company's priorities has led to a significant
+improvement in the overall organisational performance.`,
     image: "/images/sani-abdullahi-umar.jpg",
     socials: {
-      linkedin:  "https://linkedin.com",
+      linkedin:  "https://www.linkedin.com/in/sani-umar-586461413/",
       twitter:   "https://twitter.com",
-      facebook:  "https://facebook.com",
-      instagram: "https://instagram.com",
+      facebook:  "https://www.facebook.com/share/1FLFcGwiCM/",
+      instagram: "https://www.instagram.com/umar_sani1?igsh=MXEyZ3B3ZHBsOWtidQ==",
     },
   },
   {
@@ -66,13 +72,13 @@ const TEAM: TeamMember[] = [
     nameLines: ["Mustapha Muhammad", "Makama"],
     roleBadge: "Head, Investments",
     roleFulls: "Head Investments",
-    desc: "Lorem ipsum dolor sit amet, xercitation ullamco laboris nisi ut aliquip. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum do",
+    desc: `Mustapha Muhammad Makama is a Senior Manager, Investments at Bauchi Investment Corporation Limited (BICL). He brings expertise in portfolio management, financial advisory, and consultancy services, with a strong focus on investment appraisal and financial guidance.`,
     image: "/images/mustapha-muhammad-makama.jpg",
     socials: {
       linkedin:  "https://linkedin.com",
       twitter:   "https://twitter.com",
-      facebook:  "https://facebook.com",
-      instagram: "https://instagram.com",
+      facebook:  "https://www.facebook.com/share/18eq1JUuVQ/",
+      instagram: "https://www.instagram.com/mustaphamuhammadmakama?igsh=MWdnaWM3ZmhjOTRnMg==",
     },
   },
   {
@@ -111,13 +117,15 @@ const TEAM: TeamMember[] = [
     nameLines: ["Ahmad", "Bello"],
     roleBadge: "Head, Finance",
     roleFulls: "Head Finance & Accounts",
-    desc: "Lorem ipsum dolor sit amet, xercitation ullamco laboris nisi ut aliquip. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum do.",
+    desc: `Ahmadu Bello joined Bauchi Investment Corporation (BIC) Ltd. on April 1, 2012. With extensive experience in Accounting and Finance, he has played a pivotal role in reshaping the company's financial systems to align with global best practices.
+
+His contributions include ensuring full compliance with International Financial Reporting Standards (IFRS) and other regulatory requirements, while strengthening the organisation's overall financial operations.`,
     image: "/images/ahmad-bello.jpg",
     socials: {
       linkedin:  "https://linkedin.com",
       twitter:   "https://twitter.com",
-      facebook:  "https://facebook.com",
-      instagram: "https://instagram.com",
+      facebook:  "https://www.facebook.com/profile.php?id=100078686627411",
+      instagram: "https://www.instagram.com/ahmadu1839?igsh=MXNnNXAzbW9oN2V5",
     },
   },
   {
@@ -126,13 +134,13 @@ const TEAM: TeamMember[] = [
     nameLines: ["Abubakar Sadiq", "Ahmed"],
     roleBadge: "Head, Internal Audit",
     roleFulls: "Head Internal Audit",
-    desc: "Lorem ipsum dolor sit amet, xercitation ullamco laboris nisi ut aliquip. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum do.",
+    desc: `Abubakar Sadiq of internal audit with expertise in risk assessment,internal controls, compliance monitoring, and financial analysis.skilled in conducting audits.`,
     image: "/images/abubakar-sadiq-ahmed.jpg",
     socials: {
-      linkedin:  "https://linkedin.com",
+      linkedin:  "linkedin.com/in/sadiq-yusuf-zaria-264098418",
       twitter:   "https://twitter.com",
-      facebook:  "https://facebook.com",
-      instagram: "https://instagram.com",
+      facebook:  "https://www.facebook.com/share/1CzymUrMvh/",
+      instagram: "https://www.instagram.com/sadiqyusufzaria?igsh=OTZwZmZoMGN4MG1s",
     },
   },
 
@@ -143,7 +151,9 @@ const TEAM: TeamMember[] = [
     nameLines: ["Idris", "Danladi"],
     roleBadge: "Head, Corporate Services",
     roleFulls: "Head Corporate Services",
-    desc: "Lorem ipsum dolor sit amet, xercitation ullamco laboris nisi ut aliquip. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum do.",
+    desc: `Idris Danladi is the Assistant Manager, Corporate Services at Bauchi Investment Corporation Limited (BIC). He has experience in corporate communications, administration, stakeholder engagement, and digital media management. 
+
+He contributes to strengthening BIC’s public image and institutional operations through strategic communication and organizational support. Idris is passionate about investment promotion, business development, and corporate innovation.`,
     image: "/images/idris-danladi.jpg",
     socials: {
       linkedin:  "https://www.linkedin.com/in/idris-danladi-anipr-8bba9464",

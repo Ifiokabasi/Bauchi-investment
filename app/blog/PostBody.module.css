@@ -1,0 +1,145 @@
+/* PostBody.module.css */
+
+.article {
+  background: #f5f7f2;
+  padding: clamp(48px, 7vw, 80px) clamp(24px, 6vw, 80px);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.inner {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+/* ── Body typography ── */
+
+.body { display: flex; flex-direction: column; gap: 0; }
+
+.p {
+  font-size: clamp(14px, 1.35vw, 16px);
+  font-weight: 400;
+  color: rgba(13, 61, 30, 0.75);
+  line-height: 1.85;
+  margin-bottom: 22px;
+}
+
+.h2 {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  color: #0d3d1e;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin: 36px 0 14px;
+}
+
+.h3 {
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 700;
+  color: #1a5c2a;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin: 28px 0 10px;
+}
+
+.blockquote {
+  border-left: 3px solid #d4a017;
+  padding: 16px 24px;
+  margin: 28px 0;
+  background: rgba(212, 160, 23, 0.06);
+  border-radius: 0 4px 4px 0;
+}
+.blockquote p {
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 500;
+  color: #0d3d1e;
+  font-style: italic;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.strong { font-weight: 700; color: #0d3d1e; }
+.em     { font-style: italic; }
+
+.link {
+  color: #2d7a3e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.link:hover { color: #d4a017; }
+
+.ul, .ol {
+  padding-left: 22px;
+  margin-bottom: 22px;
+}
+.li {
+  font-size: clamp(14px, 1.3vw, 15.5px);
+  font-weight: 400;
+  color: rgba(13, 61, 30, 0.72);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+.ul .li::marker { color: #d4a017; }
+.ol .li::marker { color: #2d7a3e; font-weight: 700; }
+
+/* ── Inline image ── */
+
+.figure {
+  margin: 32px 0;
+}
+.figImgWrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #0d3d1e;
+}
+.caption {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(13, 61, 30, 0.45);
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ── Share row ── */
+
+.share {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 52px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(13, 61, 30, 0.1);
+}
+
+.shareLabel {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(13, 61, 30, 0.35);
+}
+
+.shareLinks { display: flex; gap: 8px; }
+
+.shareBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(13, 61, 30, 0.06);
+  border: 1px solid rgba(13, 61, 30, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(13, 61, 30, 0.5);
+  font-size: 13px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.shareBtn:hover {
+  background: #d4a017;
+  border-color: #d4a017;
+  color: #0d3d1e;
+}
