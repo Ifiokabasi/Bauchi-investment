@@ -49,8 +49,6 @@
   line-height: 1;
 }
 
-
-
 /* ── Nav Links ── */
 .navLinks {
   display: flex;
@@ -86,7 +84,6 @@
   width: 100%;
   height: 3px;
   background: currentColor;
-  
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.6s ease-in-out;
@@ -96,33 +93,37 @@
 .navLinks li a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
-  color: var(--green-main)
+  color: var(--green-main);
 }
 
 .navLinks a:hover {
   color: var(--green-main);
 }
 
-
-/* .navLinks a.active {
+/* ✅ Active state with underline for nav links only */
+.navLinks li a.active {
   color: var(--green-main);
-  border-bottom: 2px solid var(--gold);
-  padding-bottom: 0.2rem;
-} */
+}
+
+.navLinks li a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  color: var(--gold);
+}
 
 /* ── Right side ── */
 .navRight {
   display: flex;
-  align-items:center;
+  align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
 }
 
+/* ✅ Invest Now Button - No underline */
 .investBtn {
   display: inline-flex;
   align-items: center;
-  max-width: 150px;
-  width: 100%;
+  justify-content: center;
   gap: 0.4rem;
   padding: 0.55rem 1.1rem;
   border-radius: 100px;
@@ -133,12 +134,20 @@
   text-decoration: none;
   white-space: nowrap;
   transition: background 0.4s, transform 0.15s;
+  position: relative;
 }
 
 .investBtn:hover {
   background: var(--gold-light);
   transform: translateY(-1px);
 }
+
+/* ✅ Active state - just background change, NO underline */
+.investBtnActive {
+  background: var(--gold-light);
+}
+
+/* ❌ REMOVED - No underline for Invest Now button */
 
 /* ── Hamburger ── */
 .hamburger {
@@ -160,15 +169,13 @@
 }
 
 /* ── Logo Name Mobile ── */
-
-.logoNameMobile{
+.logoNameMobile {
   display: none;
-   font-family: 'montserrat', serif;
+  font-family: 'montserrat', serif;
   font-weight: 900;
   font-size: 0.75rem;
   color: var(--green-main);
   letter-spacing: 0.05em;
-
 }
 
 /* ── Mobile ── */
@@ -194,24 +201,19 @@
   .hamburger {
     display: flex;
   }
-
-  
 }
 
-
-@media (max-width: 425px){
-
-
-  .logoNameMobile{
+@media (max-width: 425px) {
+  .logoNameMobile {
     display: block;
   }
-
 
   .navbarInner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem;
+    gap: 1rem;
   }
 
   .navLogo {
@@ -220,11 +222,31 @@
   }
 
   .logoName {
-    display: none; 
+    display: none;
     font-size: 0.55rem;
   }
 
-  
+  .investBtn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+    max-width: 100px;
+  }
 
- 
+  .investBtn svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .investBtn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.6rem;
+    max-width: 80px;
+  }
+
+  .investBtn svg {
+    width: 10px;
+    height: 10px;
+  }
 }
