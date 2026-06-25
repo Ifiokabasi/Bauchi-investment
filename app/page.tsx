@@ -18,7 +18,7 @@ export default function HomePage() {
       <Sectors />
       <Team />
       <ContactPage />
-      <Footer />
+      <Footer/>
     </>
   );
 }

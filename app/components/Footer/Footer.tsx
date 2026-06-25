@@ -12,7 +12,6 @@ import {
   faPhone,
   faEnvelope,
   faLocationDot,
-  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Footer.module.css";
 
@@ -35,9 +34,6 @@ export default function Footer() {
 
   return (
     <footer className={styles.siteFooter}>
-      {/* Cinematic gradient overlay */}
-      <div className={styles.cinematicOverlay} />
-
       <div className={styles.footerInner}>
         {/* ── Brand Column ── */}
         <div className={styles.brandColumn}>
@@ -55,7 +51,7 @@ export default function Footer() {
               CORPORATION LIMITED
             </div>
           </div>
-          <p className={styles.footerTagline} >
+          <p className={styles.footerTagline}>
             Catalyzing Investment, Powering Prosperity.
           </p>
         </div>
@@ -64,9 +60,9 @@ export default function Footer() {
         <div className={styles.contactColumn}>
           <h3 className={styles.columnTitle}>Contact</h3>
           <div className={styles.contactList}>
-            <a href="tel:+2348031234567" className={styles.contactItem}>
+            <a href="tel:+2347041614459" className={styles.contactItem}>
               <FontAwesomeIcon icon={faPhone} className={styles.contactIcon} />
-              <span>+234 07041614459</span>
+              <span>+234 0704 161 4459</span>
             </a>
             <a href="mailto:bauchiinvesmentcorp@gmail.com" className={styles.contactItem}>
               <FontAwesomeIcon icon={faEnvelope} className={styles.contactIcon} />
@@ -85,10 +81,7 @@ export default function Footer() {
           <ul className={styles.linksList}>
             {quickLinks.map((link) => (
               <li key={link.label}>
-                <Link href={link.href}>
-                  {/* <FontAwesomeIcon icon={faArrowRight} className={styles.linkIcon} /> */}
-                  {link.label}
-                </Link>
+                <Link href={link.href}>{link.label}</Link>
               </li>
             ))}
           </ul>
