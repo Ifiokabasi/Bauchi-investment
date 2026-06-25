@@ -1,5 +1,6 @@
 import InvestmentsHero from "../components/investments/InvestmentHero";
 import IncentivesLedger from "../components/investments/IncentivesLedger";
+import Footer from "../components/Footer/Footer";
 
 export const metadata = {
   title: "Investment Opportunities | Bauchi Investment Corporation",
@@ -12,6 +13,7 @@ export default function InvestmentsPageWrapper() {
     <main>
       <InvestmentsHero />
       <IncentivesLedger />
+      <Footer/>
     </main>
   );
 }
