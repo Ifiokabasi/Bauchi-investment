@@ -5,6 +5,12 @@
 
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faXTwitter,
+  faLinkedinIn,
+  faFacebookF,
+} from "@fortawesome/free-brands-svg-icons";
 import { urlFor, Post } from "@/sanity/lib/sanity";
 import styles from "./PostBody.module.css";
 
@@ -89,6 +95,9 @@ const components = {
 ───────────────────────────────────────── */
 
 export default function PostBody({ post }: { post: Post }) {
+  // Get the current URL for sharing
+  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+
   return (
     <article className={styles.article}>
       <div className={styles.inner}>
@@ -101,31 +110,37 @@ export default function PostBody({ post }: { post: Post }) {
           <span className={styles.shareLabel}>Share</span>
           <div className={styles.shareLinks}>
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                post.title
+              )}&url=${encodeURIComponent(shareUrl)}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.shareBtn}
               aria-label="Share on Twitter"
             >
-              <i className="fa-brands fa-x-twitter" aria-hidden="true" />
+              <FontAwesomeIcon icon={faXTwitter} />
             </a>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                shareUrl
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.shareBtn}
               aria-label="Share on LinkedIn"
             >
-              <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
+              <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
             <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                shareUrl
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.shareBtn}
               aria-label="Share on Facebook"
             >
-              <i className="fa-brands fa-facebook-f" aria-hidden="true" />
+              <FontAwesomeIcon icon={faFacebookF} />
             </a>
           </div>
         </div>

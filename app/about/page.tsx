@@ -65,9 +65,9 @@ const MILESTONES = [
 
 const VALUES = [
   { num: "01", icon: faShieldHalved, name: "Integrity" },
-  { num: "02", icon: faPeopleGroup,  name: "Teamwork" },
-  { num: "03", icon: faHandshake,    name: "Hospitality" },
-  { num: "04", icon: faBriefcase,    name: "Professionalism" },
+  { num: "02", icon: faPeopleGroup,  name: "Collaboration" },
+  { num: "03", icon: faHandshake,    name: "Accountability" },
+  { num: "04", icon: faBriefcase,    name: "Innovation" },
   { num: "05", icon: faStar,         name: "Commitment to Excellence" },
 ];
 
