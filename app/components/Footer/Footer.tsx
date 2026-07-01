@@ -64,9 +64,9 @@ export default function Footer() {
               <FontAwesomeIcon icon={faPhone} className={styles.contactIcon} />
               <span>+234 0704 161 4459</span>
             </a>
-            <a href="mailto:bauchiinvesmentcorp@gmail.com" className={styles.contactItem}>
+            <a href="mailto:info@bauchiinvestments.com.ng" className={styles.contactItem}>
               <FontAwesomeIcon icon={faEnvelope} className={styles.contactIcon} />
-              <span>bauchiinvesmentcorp@gmail.com</span>
+              <span>info@bauchiinvestments.com.ng</span>
             </a>
             <div className={styles.contactItem}>
               <FontAwesomeIcon icon={faLocationDot} className={styles.contactIcon} />
