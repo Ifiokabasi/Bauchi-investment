@@ -42,7 +42,7 @@ const CONTACT_ITEMS = [
   {
     icon: faEnvelope,
     label: "Email",
-    value: "bauchiinvesmentcorp@gmail.com",
+    value: "info@bauchiinvestments.com.ng",
   },
   {
     icon: faClock,
