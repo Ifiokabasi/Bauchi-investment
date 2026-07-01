@@ -15,6 +15,7 @@ import {
   faClock,
   faArrowRight,
   faCircleCheck,
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faLinkedinIn,
@@ -51,10 +52,32 @@ const CONTACT_ITEMS = [
   },
 ];
 
-const OFFICES = [
-  { name: "Bauchi State Headquarters", active: true },
-  { name: "Abuja Liaison Office — Abuja Investments", active: false },
-  { name: "Lagos Representative Office", active: false },
+type Office = {
+  name: string;
+  isHQ?: boolean;
+  address?: string;
+  phones?: string[];
+  email?: string;
+  website?: string;
+};
+
+const OFFICES: Office[] = [
+  {
+    name: "Bauchi State Headquarters",
+    isHQ: true,
+  },
+  {
+    name: "Abuja Liaison Office",
+    address:
+      "Grand Square, 4th Floor, 270 Mohammadu Buhari Way, Central Business District, Abuja",
+    phones: ["08036271809", "08065515130"],
+  },
+  {
+    name: "Lagos Representative Office",
+    address: "1st Floor, Mandilas Building, 35 Simpson Street, Lagos",
+    website: "www.bauchisecurities.com",
+    email: "info@bauchisecurities.com",
+  },
 ];
 
 const INQUIRY_TYPES = [
@@ -170,18 +193,84 @@ export default function ContactPage() {
 
           <div className={styles.dividerL} />
 
-          {/* <motion.div className={styles.offices} {...fadeUp(0.4)}>
+          <motion.div className={styles.offices} {...fadeUp(0.4)}>
             <p className={styles.officesLabel}>Our Offices</p>
-            {OFFICES.map((o) => (
-              <div key={o.name} className={styles.officeRow}>
-                <div
-                  className={styles.officeDot}
-                  style={!o.active ? { background: "rgba(255,255,255,0.22)" } : {}}
-                />
-                <span className={styles.officeName}>{o.name}</span>
-              </div>
-            ))}
-          </motion.div> */}
+
+            <div className={styles.officesList}>
+              {OFFICES.map((office) => (
+                <div key={office.name} className={styles.officeCard}>
+                  <div className={styles.officeHead}>
+                    <span
+                      className={styles.officeDot}
+                      style={
+                        !office.isHQ
+                          ? { background: "rgba(255,255,255,0.22)" }
+                          : {}
+                      }
+                      aria-hidden="true"
+                    />
+                    <span className={styles.officeName}>{office.name}</span>
+                  </div>
+
+                  {(office.address || office.phones || office.email || office.website) && (
+                    <div className={styles.officeMeta}>
+                      {office.address && (
+                        <div className={styles.officeMetaRow}>
+                          <FontAwesomeIcon
+                            icon={faLocationDot}
+                            className={styles.officeIcon}
+                          />
+                          <span>{office.address}</span>
+                        </div>
+                      )}
+
+                      {office.phones?.map((phone) => (
+                        <a
+                          key={phone}
+                          href={`tel:${phone.replace(/\s+/g, "")}`}
+                          className={`${styles.officeMetaRow} ${styles.officeMetaLink}`}
+                        >
+                          <FontAwesomeIcon
+                            icon={faPhone}
+                            className={styles.officeIcon}
+                          />
+                          <span>{phone}</span>
+                        </a>
+                      ))}
+
+                      {office.email && (
+                        <a
+                          href={`mailto:${office.email}`}
+                          className={`${styles.officeMetaRow} ${styles.officeMetaLink}`}
+                        >
+                          <FontAwesomeIcon
+                            icon={faEnvelope}
+                            className={styles.officeIcon}
+                          />
+                          <span>{office.email}</span>
+                        </a>
+                      )}
+
+                      {office.website && (
+                        <a
+                          href={`https://${office.website.replace(/^https?:\/\//, "")}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`${styles.officeMetaRow} ${styles.officeMetaLink}`}
+                        >
+                          <FontAwesomeIcon
+                            icon={faGlobe}
+                            className={styles.officeIcon}
+                          />
+                          <span>{office.website}</span>
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
         {/* Social row */}

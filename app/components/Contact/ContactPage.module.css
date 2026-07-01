@@ -189,7 +189,26 @@
   gap: 10px;
 }
 
-.officeRow {
+.officesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.officeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(212, 160, 23, 0.1);
+}
+
+.officesList .officeCard:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.officeHead {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -204,10 +223,48 @@
 }
 
 .officeName {
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.52);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
   letter-spacing: 0.3px;
+}
+
+.officeMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-left: 16px;
+}
+
+.officeMetaRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.42);
+  text-decoration: none;
+}
+
+.officeIcon {
+  width: 11px;
+  margin-top: 2px;
+  color: var(--gold);
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.officeMetaLink {
+  transition: color 0.2s ease;
+}
+
+.officeMetaLink:hover {
+  color: var(--gold-l);
+}
+
+.officeMetaLink:hover .officeIcon {
+  opacity: 1;
 }
 
 /* ── Socials ── */
@@ -218,6 +275,7 @@
   text-transform: uppercase;
   color: #fff;
   margin-bottom: 1rem;
+  margin-top: 3rem;
 }
 
 .socials {
