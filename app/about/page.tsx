@@ -3,6 +3,7 @@
 
 import { useRef, ReactNode } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import { motion, useInView } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,33 +11,6 @@ import {
   faBullhorn, faBuilding, faChartLine, faMagnifyingGlassChart, faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AboutPage.module.css";
-
-export const metadata = {
-  title: 'About Us - Bauchi Investment Corporation',
-  description: 'Learn about Bauchi Investment Corporation, our mission, vision, and leadership team.',
-  openGraph: {
-    title: 'About Us - Bauchi Investment Corporation',
-    description: 'Learn about Bauchi Investment Corporation, our mission, vision, and leadership team.',
-    url: 'https://www.bauchiinvestments.com.ng/about',
-    siteName: 'Bauchi Investment Corporation',
-    images: [
-      {
-        url: '/images/bicHouse.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'About Us - Bauchi Investment Corporation',
-    description: 'Learn about Bauchi Investment Corporation, our mission, vision, and leadership team.',
-    images: ['/images/bicHouse.jpg'],
-  },
-  keywords: ['Bauchi Investment Corporation', 'investment', 'Nigeria', 'development finance'],
-};
 
 type Direction = "up" | "left" | "right" | "scale";
 
@@ -114,208 +88,234 @@ const SERVICES = [
 
 export default function AboutPage() {
   return (
-    <main className={styles.page}>
+    <>
+      <Head>
+        <title>About Us - Bauchi Investment Corporation</title>
+        <meta name="description" content="Learn about Bauchi Investment Corporation, our mission, vision, and leadership team." />
+        <meta name="keywords" content="Bauchi Investment Corporation, investment, Nigeria, development finance" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="About Us - Bauchi Investment Corporation" />
+        <meta property="og:description" content="Learn about Bauchi Investment Corporation, our mission, vision, and leadership team." />
+        <meta property="og:url" content="https://yourdomain.com/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Bauchi Investment Corporation" />
+        <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Us - Bauchi Investment Corporation" />
+        <meta name="twitter:description" content="Learn about Bauchi Investment Corporation, our mission, vision, and leadership team." />
+        <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg" />
+        
+        {/* Robots */}
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://yourdomain.com/about" />
+      </Head>
 
-      <section className={styles.pageHero}>
-        <div className={styles.heroImg} />
-        <div className={styles.heroOverlay} />
-        <div className={styles.heroContent}>
+      <main className={styles.page}>
+        <section className={styles.pageHero}>
+          <div className={styles.heroImg} />
+          <div className={styles.heroOverlay} />
+          <div className={styles.heroContent}>
+            <motion.div
+              className={styles.heroEyebrow}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22,1,0.36,1], delay: 0.3 }}
+            >
+              Bauchi Investment Corporation
+            </motion.div>
+            <motion.h1
+              className={styles.heroH}
+              initial={{ opacity: 0, y: 32 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.22,1,0.36,1], delay: 0.45 }}
+            >
+              About Us
+            </motion.h1>
+            <motion.div
+              className={styles.heroRule}
+              initial={{ width: 0 }}
+              animate={{ width: 60 }}
+              transition={{ duration: 0.8, ease: [0.22,1,0.36,1], delay: 0.8 }}
+            />
+            <motion.p
+              className={styles.heroSub}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.22,1,0.36,1], delay: 0.65 }}
+            >
+              Bauchi State&rsquo;s premier development finance institution — mobilizing
+              capital, enabling strategic partnerships and building a prosperous
+              economy since 1977.
+            </motion.p>
+          </div>
           <motion.div
-            className={styles.heroEyebrow}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22,1,0.36,1], delay: 0.3 }}
+            className={styles.heroScroll}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
           >
-            Bauchi Investment Corporation
+            <span className={styles.scrollLabel}>Scroll</span>
+            <div className={styles.scrollArrow} />
           </motion.div>
-          <motion.h1
-            className={styles.heroH}
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22,1,0.36,1], delay: 0.45 }}
-          >
-            About Us
-          </motion.h1>
-          <motion.div
-            className={styles.heroRule}
-            initial={{ width: 0 }}
-            animate={{ width: 60 }}
-            transition={{ duration: 0.8, ease: [0.22,1,0.36,1], delay: 0.8 }}
-          />
-          <motion.p
-            className={styles.heroSub}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22,1,0.36,1], delay: 0.65 }}
-          >
-            Bauchi State&rsquo;s premier development finance institution — mobilizing
-            capital, enabling strategic partnerships and building a prosperous
-            economy since 1977.
-          </motion.p>
-        </div>
-        <motion.div
-          className={styles.heroScroll}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-        >
-          <span className={styles.scrollLabel}>Scroll</span>
-          <div className={styles.scrollArrow} />
-        </motion.div>
-      </section>
+        </section>
 
-      <div className={styles.introStrip}>
-        <div className={styles.bc}>
-          <Link href="/" className={styles.bcLink}>Home</Link>
-          <span className={styles.bcSep}>/</span>
-          <span className={styles.bcActive}>About Us</span>
-        </div>
-      </div>
-
-      <section className={styles.story}>
-        <div className={styles.storyInner}>
-          <Reveal direction="left" className={styles.storyText}>
-            <div className={styles.tag}>Company Story</div>
-            <h2 className={styles.storyH}>A Legacy of <em>Investment</em></h2>
-            <p className={styles.storyP}>
-              Bauchi Investment Corporation Limited (BIC) was established in June
-              1977 as a development finance institution to stimulate economic growth
-              and development via trade, commerce and industrialisation in Bauchi State.
-            </p>
-            <p className={styles.storyP}>
-              Wholly owned by the Bauchi State Government, BIC commenced operations
-              with an initial paid-up share capital of ₦3M — growing steadily to
-              become one of Nigeria&rsquo;s most active state-level investment bodies.
-            </p>
-            <p className={styles.storyP}>
-              Formerly known as the Bauchi State Investment and Property Development
-              Company Ltd (BSIPDC), the company was rebranded as Bauchi Investment
-              Corporation (BIC) in 2006, with share capital raised to ₦500M.
-            </p>
-          </Reveal>
-
-          <Reveal direction="right" delay={0.1} className={styles.milestones}>
-            {MILESTONES.map((m) => (
-              <div key={m.year} className={`${styles.milestone} ${m.active ? styles.milestoneActive : ""}`}>
-                <div className={styles.mYear}>{m.year}</div>
-                <div className={styles.mDot} />
-                <div className={styles.mContent}>
-                  <div className={styles.mTitle}>{m.title}</div>
-                  <div className={styles.mDesc}>{m.desc}</div>
-                </div>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      <section className={styles.mvSection}>
-        <div className={styles.mvGrid}>
-          <Reveal direction="left" className={styles.mvHalf}>
-            <p className={styles.mvLabel}>Our Vision</p>
-            <div className={styles.mvRule} />
-            <h3 className={styles.mvTitle}>Best Destination of Choice for Investors in Nigeria</h3>
-            <p className={styles.mvText}>
-              To transform Bauchi State to be the leading and most attractive
-              investment destination in Nigeria, offering world-class services
-              and a business-friendly environment.
-            </p>
-          </Reveal>
-          <Reveal direction="right" delay={0.1} className={`${styles.mvHalf} ${styles.mvHalfDark}`}>
-            <p className={styles.mvLabel}>Our Mission</p>
-            <div className={styles.mvRule} />
-            <h3 className={styles.mvTitle}>One-Stop-Shop Investment Services</h3>
-            <p className={styles.mvText}>
-              To promote and facilitate investment, trade and competitive
-              entrepreneurship by providing reliable, up-to-date information
-              and one-stop-shop services to attract investment in Bauchi State.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className={styles.valuesSection}>
-        <div className={styles.valBg} />
-        <div className={styles.valInner}>
-          <Reveal className={styles.valHeader}>
-            <div className={`${styles.tag} ${styles.tagCenter}`}>Our Values</div>
-            <h2 className={styles.valH}>
-              The Principles <span className={styles.valOutline}>We Stand By</span>
-            </h2>
-          </Reveal>
-          <div className={styles.valGrid}>
-            {VALUES.map((v, i) => (
-              <Reveal key={v.name} direction="scale" delay={i * 0.1} className={styles.valCard}>
-                <div className={styles.valNum}>{v.num}</div>
-                <div className={styles.valIcon}><FontAwesomeIcon icon={v.icon} /></div>
-                <div className={styles.valName}>{v.name}</div>
-              </Reveal>
-            ))}
+        <div className={styles.introStrip}>
+          <div className={styles.bc}>
+            <Link href="/" className={styles.bcLink}>Home</Link>
+            <span className={styles.bcSep}>/</span>
+            <span className={styles.bcActive}>About Us</span>
           </div>
         </div>
-      </section>
 
-      <section className={styles.servicesSection}>
-        <div className={styles.svcInner}>
-          <Reveal className={styles.svcHeader}>
-            <div className={styles.tag}>What We Do</div>
-            <h2 className={styles.svcH}>Our Core <em>Services</em></h2>
-            <p className={styles.svcSub}>
-              Four integrated service lines that drive investment, development
-              and economic growth across Bauchi State.
-            </p>
-          </Reveal>
-          <div className={styles.svcGrid}>
-            {SERVICES.map((svc, i) => (
-              <Reveal
-                key={svc.num}
-                direction={i % 2 === 0 ? "left" : "right"}
-                delay={i % 2 === 0 ? 0 : 0.12}
-                className={styles.svcCard}
-              >
-                <div className={styles.svcNum}>{svc.num}</div>
-                <div className={styles.svcIcon}><FontAwesomeIcon icon={svc.icon} /></div>
-                <h3 className={styles.svcName}>{svc.name}</h3>
-                <p className={styles.svcDesc}>{svc.desc}</p>
-                <div className={styles.svcDivider} />
-                <div className={styles.svcDetails}>
-                  <div>
-                    <div className={styles.detailLabel}>Key Benefits</div>
-                    <div className={styles.detailText}>{svc.benefit}</div>
-                  </div>
-                  <div>
-                    <div className={styles.detailLabel}>Key Features</div>
-                    <div className={styles.detailText}>{svc.features}</div>
+        <section className={styles.story}>
+          <div className={styles.storyInner}>
+            <Reveal direction="left" className={styles.storyText}>
+              <div className={styles.tag}>Company Story</div>
+              <h2 className={styles.storyH}>A Legacy of <em>Investment</em></h2>
+              <p className={styles.storyP}>
+                Bauchi Investment Corporation Limited (BIC) was established in June
+                1977 as a development finance institution to stimulate economic growth
+                and development via trade, commerce and industrialisation in Bauchi State.
+              </p>
+              <p className={styles.storyP}>
+                Wholly owned by the Bauchi State Government, BIC commenced operations
+                with an initial paid-up share capital of ₦3M — growing steadily to
+                become one of Nigeria&rsquo;s most active state-level investment bodies.
+              </p>
+              <p className={styles.storyP}>
+                Formerly known as the Bauchi State Investment and Property Development
+                Company Ltd (BSIPDC), the company was rebranded as Bauchi Investment
+                Corporation (BIC) in 2006, with share capital raised to ₦500M.
+              </p>
+            </Reveal>
+
+            <Reveal direction="right" delay={0.1} className={styles.milestones}>
+              {MILESTONES.map((m) => (
+                <div key={m.year} className={`${styles.milestone} ${m.active ? styles.milestoneActive : ""}`}>
+                  <div className={styles.mYear}>{m.year}</div>
+                  <div className={styles.mDot} />
+                  <div className={styles.mContent}>
+                    <div className={styles.mTitle}>{m.title}</div>
+                    <div className={styles.mDesc}>{m.desc}</div>
                   </div>
                 </div>
-              </Reveal>
-            ))}
+              ))}
+            </Reveal>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className={styles.ctaStrip}>
-        <div className={styles.ctaInner}>
-          <Reveal direction="left">
-            <div className={styles.ctaTag}>Ready to Invest?</div>
-            <h3 className={styles.ctaH}>
-              Start Your Investment Journey<br />in Bauchi State Today
-            </h3>
-            <p className={styles.ctaSub}>
-              Talk to our team and explore the opportunities waiting for you.
-            </p>
-          </Reveal>
-          <Reveal direction="right" delay={0.15} className={styles.ctaBtns}>
-            <Link href="/investments" className={styles.btnGold}>
-              Explore Opportunities <FontAwesomeIcon icon={faArrowRight} />
-            </Link>
-            <Link href="/contact" className={styles.btnOutlineW}>
-              Contact Us
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+        <section className={styles.mvSection}>
+          <div className={styles.mvGrid}>
+            <Reveal direction="left" className={styles.mvHalf}>
+              <p className={styles.mvLabel}>Our Vision</p>
+              <div className={styles.mvRule} />
+              <h3 className={styles.mvTitle}>Best Destination of Choice for Investors in Nigeria</h3>
+              <p className={styles.mvText}>
+                To transform Bauchi State to be the leading and most attractive
+                investment destination in Nigeria, offering world-class services
+                and a business-friendly environment.
+              </p>
+            </Reveal>
+            <Reveal direction="right" delay={0.1} className={`${styles.mvHalf} ${styles.mvHalfDark}`}>
+              <p className={styles.mvLabel}>Our Mission</p>
+              <div className={styles.mvRule} />
+              <h3 className={styles.mvTitle}>One-Stop-Shop Investment Services</h3>
+              <p className={styles.mvText}>
+                To promote and facilitate investment, trade and competitive
+                entrepreneurship by providing reliable, up-to-date information
+                and one-stop-shop services to attract investment in Bauchi State.
+              </p>
+            </Reveal>
+          </div>
+        </section>
 
-    </main>
+        <section className={styles.valuesSection}>
+          <div className={styles.valBg} />
+          <div className={styles.valInner}>
+            <Reveal className={styles.valHeader}>
+              <div className={`${styles.tag} ${styles.tagCenter}`}>Our Values</div>
+              <h2 className={styles.valH}>
+                The Principles <span className={styles.valOutline}>We Stand By</span>
+              </h2>
+            </Reveal>
+            <div className={styles.valGrid}>
+              {VALUES.map((v, i) => (
+                <Reveal key={v.name} direction="scale" delay={i * 0.1} className={styles.valCard}>
+                  <div className={styles.valNum}>{v.num}</div>
+                  <div className={styles.valIcon}><FontAwesomeIcon icon={v.icon} /></div>
+                  <div className={styles.valName}>{v.name}</div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.servicesSection}>
+          <div className={styles.svcInner}>
+            <Reveal className={styles.svcHeader}>
+              <div className={styles.tag}>What We Do</div>
+              <h2 className={styles.svcH}>Our Core <em>Services</em></h2>
+              <p className={styles.svcSub}>
+                Four integrated service lines that drive investment, development
+                and economic growth across Bauchi State.
+              </p>
+            </Reveal>
+            <div className={styles.svcGrid}>
+              {SERVICES.map((svc, i) => (
+                <Reveal
+                  key={svc.num}
+                  direction={i % 2 === 0 ? "left" : "right"}
+                  delay={i % 2 === 0 ? 0 : 0.12}
+                  className={styles.svcCard}
+                >
+                  <div className={styles.svcNum}>{svc.num}</div>
+                  <div className={styles.svcIcon}><FontAwesomeIcon icon={svc.icon} /></div>
+                  <h3 className={styles.svcName}>{svc.name}</h3>
+                  <p className={styles.svcDesc}>{svc.desc}</p>
+                  <div className={styles.svcDivider} />
+                  <div className={styles.svcDetails}>
+                    <div>
+                      <div className={styles.detailLabel}>Key Benefits</div>
+                      <div className={styles.detailText}>{svc.benefit}</div>
+                    </div>
+                    <div>
+                      <div className={styles.detailLabel}>Key Features</div>
+                      <div className={styles.detailText}>{svc.features}</div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.ctaStrip}>
+          <div className={styles.ctaInner}>
+            <Reveal direction="left">
+              <div className={styles.ctaTag}>Ready to Invest?</div>
+              <h3 className={styles.ctaH}>
+                Start Your Investment Journey<br />in Bauchi State Today
+              </h3>
+              <p className={styles.ctaSub}>
+                Talk to our team and explore the opportunities waiting for you.
+              </p>
+            </Reveal>
+            <Reveal direction="right" delay={0.15} className={styles.ctaBtns}>
+              <Link href="/investments" className={styles.btnGold}>
+                Explore Opportunities <FontAwesomeIcon icon={faArrowRight} />
+              </Link>
+              <Link href="/contact" className={styles.btnOutlineW}>
+                Contact Us
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
