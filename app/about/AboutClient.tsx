@@ -1,5 +1,5 @@
-// app/about/page.tsx
-"use client";
+// app/about/AboutClient.tsx
+'use client';
 
 import { useRef, ReactNode } from "react";
 import Link from "next/link";
@@ -10,33 +10,6 @@ import {
   faBullhorn, faBuilding, faChartLine, faMagnifyingGlassChart, faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AboutPage.module.css";
-
-export const metadata = {
-  title: 'About Us - Bauchi Investment Corporation',
-  description: 'Learn about Bauchi Investment Corporation, our mission, vision, and leadership team.',
-  openGraph: {
-    title: 'About Us - Bauchi Investment Corporation',
-    description: 'Learn about Bauchi Investment Corporation, our mission, vision, and leadership team.',
-    url: 'https://www.bauchiinvestments.com.ng/about',
-    siteName: 'Bauchi Investment Corporation',
-    images: [
-      {
-        url: '/images/bicHouse.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'About Us - Bauchi Investment Corporation',
-    description: 'Learn about Bauchi Investment Corporation, our mission, vision, and leadership team.',
-    images: ['/images/bicHouse.jpg'],
-  },
-  keywords: ['Bauchi Investment Corporation', 'investment', 'Nigeria', 'development finance'],
-};
 
 type Direction = "up" | "left" | "right" | "scale";
 
@@ -112,7 +85,7 @@ const SERVICES = [
   },
 ];
 
-export default function AboutPage() {
+export default function AboutClient() {
   return (
     <main className={styles.page}>
 
