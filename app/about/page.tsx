@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 // app/about/page.tsx  OR  components/About/AboutPage.tsx
 // Requires: framer-motion, @fortawesome/react-fontawesome,
@@ -13,6 +13,10 @@ import {
   faBullhorn, faBuilding, faChartLine, faMagnifyingGlassChart, faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AboutPage.module.css";
+
+
+
+
 
 
 
