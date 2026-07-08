@@ -17,7 +17,10 @@ import styles from "./AboutPage.module.css";
 
 
 
-
+export const metadata = {
+  title: 'About Us - Bauchi Investment Corporation',
+  description: 'Learn about Bauchi Investment Corporation, our mission, vision, and leadership team.',
+}
 
 
 
