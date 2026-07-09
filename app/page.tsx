@@ -8,6 +8,7 @@ import Sectors   from "@/app/components/Sector/Sectors";
 import Team      from "@/app/components/Team/Team";
 import Footer    from "@/app/components/Footer/Footer";
 import ContactPage from "@/app/components/Contact/ContactPage";
+import AboutVideo from "@/app/components/About/AboutVideo";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <StatsBand />
       <Sectors />
       <Team />
+      <AboutVideo />
       <ContactPage />
       <Footer/>
     </>
