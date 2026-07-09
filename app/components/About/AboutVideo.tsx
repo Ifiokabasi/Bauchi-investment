@@ -36,7 +36,7 @@ export default function AboutVideo() {
         >
           <div className={styles.videoContainer}>
             <iframe
-              src="https://www.youtube.com/embed/GAe453y7UG8?autoplay=1"
+              src="https://www.youtube.com/embed/GAe453y7UG8"
               title="Bauchi Investment Corporation (BIC) Ltd: Our Story"
               className={styles.videoIframe}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
