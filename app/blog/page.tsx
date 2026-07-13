@@ -6,6 +6,12 @@ import BlogGrid from "./BlogGrid";
 import BlogFilterBar from "./BlogFilterBar";
 import Footer from '../components/Footer/Footer';
 
+
+
+
+
+
+
 export const revalidate = 60;
 
 export const metadata = {
