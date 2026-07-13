@@ -20,8 +20,8 @@ export default defineConfig({
   name: 'default',
   title: 'BIC Studio',
   basePath: '/studio',
-  projectId,
-  dataset,
+  projectId: 'bpfdl4np',
+  dataset: 'production',
   apiVersion,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema: {types: schemaTypes},
