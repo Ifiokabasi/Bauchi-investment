@@ -148,7 +148,7 @@ His contributions include ensuring full compliance with International Financial 
   {
     id: 7,
     name: " ⁠Idris Danladi",
-    nameLines: ["Idris", "Danladi"],
+    nameLines: ["Idris", "Danladi, ANIPR"],
     roleBadge: "Head, Corporate Services",
     roleFulls: "Head Corporate Services",
     desc: `Idris Danladi is the Assistant Manager, Corporate Services at Bauchi Investment Corporation Limited (BIC). He has experience in corporate communications, administration, stakeholder engagement, and digital media management. 
